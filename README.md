@@ -1,24 +1,51 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## Using Ruby on Rails with vue.js
 
-Things you may want to cover:
+### Create Project
 
-* Ruby version
+```
+rails new {app-name} --webpack=vue
+```
 
-* System dependencies
+### Create App / Index page in Home Controller
 
-* Configuration
+```
+rails g controller Home index app
+```
 
-* Database creation
+### Add Vue App in App page
 
-* Database initialization
+**app.html.erb**
 
-* How to run the test suite
+```
+<%= javascript_pack_tag 'hello_vue' %>
+```
 
-* Services (job queues, cache servers, search engines, etc.)
+### Using webpack-dev-server with foreman
 
-* Deployment instructions
+```
+# ./Procfile
+web: bundle exec puma -p $PORT
 
-* ...
+# ./Procfile.dev
+web: bundle exec rails s
+# watcher: ./bin/webpack-watcher
+hot: ./bin/webpack-dev-server
+
+# ./bin/server
+
+#!/bin/bash -i
+bundle install
+bundle exec foreman start -f Procfile.dev
+
+# chmod 777 ./bin/server
+
+# Gemfile
+group :development do
+  gem 'foreman'
+end
+```
+
+
+run `rails s` and open url `http://localhost:5000`
