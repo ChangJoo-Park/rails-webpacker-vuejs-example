@@ -48,4 +48,4 @@ end
 ```
 
 
-run `rails s` and open url `http://localhost:5000`
+run `./bin/server` and open url `http://localhost:5000`
