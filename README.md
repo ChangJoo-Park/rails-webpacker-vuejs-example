@@ -47,5 +47,9 @@ group :development do
 end
 ```
 
+### Add webpacker dev_server_hot to development.rb
+```
+config.x.webpacker[:dev_server_host] = "http://localhost:8080"
+```
 
 run `./bin/server` and open url `http://localhost:5000`
